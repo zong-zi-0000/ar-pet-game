@@ -4,8 +4,10 @@
  */
 
 const API = {
-    // 后端API基础URL - 可根据实际部署环境修改
-    baseURL: 'https://api.example.com', // TODO: 替换为实际后端地址
+    // 后端API基础URL - 从环境变量读取，或回退到本地模式
+    baseURL: (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_API_URL) 
+             || localStorage.getItem('apiBaseURL') 
+             || '',
     
     // 用户标识（通常从登录态获取，这里使用本地存储）
     userId: null,

@@ -65,7 +65,12 @@ class Game {
             hintHeart: document.getElementById('hintHeart'),
             hintWave: document.getElementById('hintWave'),
             hintOk: document.getElementById('hintOk'),
-            hintFist: document.getElementById('hintFist')
+            hintFist: document.getElementById('hintFist'),
+            settingsBtn: document.getElementById('settingsBtn'),
+            settingsModal: document.getElementById('settingsModal'),
+            apiUrlInput: document.getElementById('apiUrlInput'),
+            saveApiBtn: document.getElementById('saveApiBtn'),
+            cancelSettingsBtn: document.getElementById('cancelSettingsBtn')
         };
     }
     
@@ -76,8 +81,38 @@ class Game {
         // 开始按钮
         this.elements.startButton.addEventListener('click', () => this.start());
         
+        // 设置按钮
+        this.elements.settingsBtn.addEventListener('click', () => this.openSettings());
+        this.elements.saveApiBtn.addEventListener('click', () => this.saveSettings());
+        this.elements.cancelSettingsBtn.addEventListener('click', () => this.closeSettings());
+        
         // 键盘快捷键（用于桌面测试）
         document.addEventListener('keydown', (e) => this.handleKeyboard(e));
+    }
+    
+    openSettings() {
+        const savedUrl = localStorage.getItem('apiBaseURL') || '';
+        this.elements.apiUrlInput.value = savedUrl;
+        this.elements.settingsModal.style.display = 'flex';
+    }
+    
+    closeSettings() {
+        this.elements.settingsModal.style.display = 'none';
+    }
+    
+    saveSettings() {
+        const url = this.elements.apiUrlInput.value.trim();
+        if (url) {
+            localStorage.setItem('apiBaseURL', url);
+            API.baseURL = url;
+            this.elements.settingsModal.style.display = 'none';
+            console.log('[Game] 后端API已设置为:', url);
+        } else {
+            localStorage.removeItem('apiBaseURL');
+            API.baseURL = '';
+            this.elements.settingsModal.style.display = 'none';
+            console.log('[Game] 已切换为本地存储模式');
+        }
     }
     
     /**

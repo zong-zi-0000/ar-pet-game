@@ -572,3 +572,107 @@ html, body {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* ============================================
+   设置弹窗样式
+   ============================================ */
+
+.settings-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.settings-btn:hover {
+    transform: scale(1.1);
+}
+
+.settings-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.settings-modal .modal-content {
+    background: white;
+    border-radius: 20px;
+    padding: 24px;
+    width: 90%;
+    max-width: 320px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+
+.settings-modal h3 {
+    text-align: center;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+    font-size: 18px;
+}
+
+.settings-modal label {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-bottom: 6px;
+    display: block;
+}
+
+.settings-modal input[type="text"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.settings-modal input[type="text"]:focus {
+    border-color: var(--primary-pink);
+}
+
+.settings-tip {
+    font-size: 11px;
+    color: var(--text-light);
+    margin: 6px 0 12px;
+}
+
+.settings-btns {
+    display: flex;
+    gap: 10px;
+}
+
+.save-btn, .cancel-btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.save-btn {
+    background: linear-gradient(135deg, var(--primary-pink), var(--primary-peach));
+    color: white;
+}
+
+.cancel-btn {
+    background: #f0f0f0;
+    color: var(--text-dark);
+}

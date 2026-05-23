@@ -68,6 +68,23 @@
         
         <!-- 手势识别状态 -->
         <div class="gesture-status" id="gestureStatus">正在初始化手势识别...</div>
+        
+        <!-- 设置按钮 -->
+        <button class="settings-btn" id="settingsBtn">⚙️</button>
+        
+        <!-- 设置弹窗 -->
+        <div class="settings-modal" id="settingsModal">
+            <div class="modal-content">
+                <h3>⚙️ 设置</h3>
+                <label>后端API地址：</label>
+                <input type="text" id="apiUrlInput" placeholder="例如: https://your-backend.railway.app" />
+                <p class="settings-tip">留空则仅使用本地存储模式</p>
+                <div class="settings-btns">
+                    <button class="save-btn" id="saveApiBtn">保存</button>
+                    <button class="cancel-btn" id="cancelSettingsBtn">取消</button>
+                </div>
+            </div>
+        </div>
     </div>
     
     <!-- 权限请求提示 -->
