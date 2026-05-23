@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>AR手势互动猫咪养成</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 摄像头背景 -->
+    <video id="cameraVideo" autoplay playsinline></video>
+    
+    <!-- 手势检测画布（用于调试显示） -->
+    <canvas id="handCanvas"></canvas>
+    
+    <!-- Three.js 3D画布 -->
+    <canvas id="threeCanvas"></canvas>
+    
+    <!-- UI界面层 -->
+    <div class="ui-overlay">
+        <!-- 顶部状态栏 -->
+        <div class="status-bar">
+            <div class="status-item">
+                <div class="status-icon hunger-icon">🐟</div>
+                <div class="progress-container">
+                    <div class="progress-bar hunger-bar" id="hungerBar"></div>
+                </div>
+                <span class="status-value" id="hungerValue">80</span>
+            </div>
+            <div class="status-item">
+                <div class="status-icon happy-icon">😊</div>
+                <div class="progress-container">
+                    <div class="progress-bar happy-bar" id="happyBar"></div>
+                </div>
+                <span class="status-value" id="happyValue">80</span>
+            </div>
+            <div class="status-item">
+                <div class="status-icon love-icon">💕</div>
+                <div class="progress-container">
+                    <div class="progress-bar love-bar" id="loveBar"></div>
+                </div>
+                <span class="status-value" id="loveValue">80</span>
+            </div>
+        </div>
+        
+        <!-- 手势提示 -->
+        <div class="gesture-hints">
+            <div class="hint-item" id="hintHeart">
+                <span class="hint-icon">🤟</span>
+                <span class="hint-text">比心+开心</span>
+            </div>
+            <div class="hint-item" id="hintWave">
+                <span class="hint-icon">✋</span>
+                <span class="hint-text">挥手+亲密度</span>
+            </div>
+            <div class="hint-item" id="hintOk">
+                <span class="hint-icon">👌</span>
+                <span class="hint-text">OK+喂食</span>
+            </div>
+            <div class="hint-item" id="hintFist">
+                <span class="hint-icon">✊</span>
+                <span class="hint-text">握拳抚摸</span>
+            </div>
+        </div>
+        
+        <!-- 特效容器 -->
+        <div id="effectContainer"></div>
+        
+        <!-- 手势识别状态 -->
+        <div class="gesture-status" id="gestureStatus">正在初始化手势识别...</div>
+    </div>
+    
+    <!-- 权限请求提示 -->
+    <div class="permission-modal" id="permissionModal">
+        <div class="modal-content">
+            <div class="modal-icon">🐱</div>
+            <h2>欢迎来到猫咪养成游戏！</h2>
+            <p>请允许使用摄像头以识别您的手势</p>
+            <button id="startButton" class="start-btn">开始游戏</button>
+        </div>
+    </div>
+
+    <!-- Three.js -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+    
+    <!-- MediaPipe Hands -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1675469240/hands.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3.1675466862/camera_utils.min.js"></script>
+    
+    <!-- 主脚本 -->
+    <script src="js/api.js"></script>
+    <script src="js/pet.js"></script>
+    <script src="js/handtracking.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
